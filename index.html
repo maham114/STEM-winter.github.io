@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/616de63735.js" crossorigin="anonymous"></script>
+</head>
+<style>
+  .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 50%;
+      height: 100%;
+    }
+    @media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    .group:hover .opacity-25 {
+      opacity: 1;
+      transition-duration: 200ms;
+    }
+    .group:hover .opacity-25 {
+      opacity: 1;
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .menu{
+      background-color: #242951;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      position: absolute;
+      z-index: 100;
+      padding: 20px;
+      right:20px;
+      top: 20px;
+    }
+    .menu_button{
+      display: none;
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      left: 20px;
+      padding: 30px;
+    }
+    .menu-list {
+      display: flex;
+      flex-direction: column ;
+      list-style: none;
+      justify-content: space-around;
+      width: 150px;
+      gap: 2rem;
+    }
+    @media (max-width: 760px) {
+      .menu_button{
+        display: block;
+      }
+    }
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #201f47;
+    /* background: linear-gradient(135deg, rgb(7, 5, 39) 0%, rgb(32, 0, 43) 50%, rgb(144, 0, 255) 100%); */
+    font-family: "Poppins";
+    width: 100%;
+}
+
+/* Navbar container styling */
+.navbar {
+  background-color: #242951;
+  padding: 10px 20px;
+  margin-top: 4rem;
+  border-radius: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  /* width: max-content; */
+  align-items: center;
+  height: 5rem;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  width: auto;
+  gap: 2rem;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  color: #d1b2ff;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 1.2rem;
+  /* padding-left: 1rem; */
+}
+
+.navbar-item:hover {
+  color: #ff73fa;
+}
+
+.navbar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-icon p {
+  color: white;
+}
+
+.navbar-icon i {
+  padding-right: 11px;
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #ff73fa;
+}
+
+
+.section {
+    /* padding: 2rem 1rem; */
+    background-color: #201f47;
+    background: none;
+  }
+  
+  .container_helo {
+    margin: 0;
+    /* max-width: 100vw; */
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+    overflow-x: hidden;
+  }
+
+  .days{
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #ff73fa;
+  }
+
+  .success{
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #7f00ff;
+  }
+  
+  .heading-primary {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: white;
+    font-family: "Poppins";
+    margin-bottom: 0.5rem;
+  }
+
+  
+  .head1{
+    margin-left: 23px;
+    display: flex;
+    justify-content: center;
+  }
+  .head2{
+    display: flex;
+    justify-content: center;
+  }
+
+  
+/* Media Queries for Responsiveness */
+@media (max-width: 1140px){
+  .navbar-item{
+    font-size: 1rem;
+  }
+}
+@media (max-width: 1140px) and (min-width: 960px) {
+  .navbar {
+      margin-left: 10%; 
+      width: 100%; 
+  }
+
+  .navbar-list {
+      gap: 40px;
+      padding: 1rem;
+  }
+
+  .navbar-item {
+      font-size: 0.9rem; 
+  }
+
+  .navbar-icon i {
+      font-size: 30px;
+  }
+
+  .cards{
+    height: 12rem;
+    width: 17rem;
+  }
+
+  .shadow_{
+    width: 17.3rem;
+  }
+}
+
+
+
+@media (max-width: 960px) {
+  .navbar {
+      margin-left: 10%; 
+      width: 90%;
+  }
+
+  
+  .navbar-list {
+    gap: 40px;
+}
+
+  .navbar-item {
+      font-size: 0.9rem; 
+  }
+
+  .navbar-icon i {
+      font-size: 18px;
+  }
+
+  .grid_{
+    column-gap: 1rem;
+  }
+
+  .cards{
+    height: 12rem;
+    width: 18rem;
+  }
+
+  .shadow_{
+    width: 18.3rem;
+  }
+}
+@media (max-width: 760px) {
+  .navbar {
+    display: none;
+    height: 4rem;
+      margin-left: 10%;
+      width: 80%; 
+  }
+
+  
+  .navbar-list {
+    gap: 30px;
+}
+
+  .navbar-item {
+      font-size: 0.8rem;
+  }
+  .heading-primary{
+    font-size: 2rem;  
+  }
+  .heading-primary > .days{
+    font-size: 2rem;  
+  }
+  .heading-primary > .success{
+    font-size: 2rem;  
+  }
+  .container_helo {
+    margin: 0;
+    /* max-width: 100vw; */
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+    overflow-x: hidden;
+  }
+  .navbar-icon i {
+      font-size: 18px; 
+  }
+
+
+  .cards{
+    height: 11rem;
+    width: 20rem;
+  }
+
+  .shadow_{
+    width: 20.3rem;
+  }
+}
+
+.grid_{
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  .grid_{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+ul li {
+  /* padding: 0 .5em .25em; */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+}
+ul li:before {
+  content: "";
+  position: absolute;
+  width: 12rem;
+  inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+  background: #7f00ff; /* the color */
+  scale: 0 1;
+  transition: .3s, translate 0s .3s;
+}
+ul:hover li:before {
+  scale: 1;
+}
+ul li:hover:before {
+  translate: 0;
+  transition: .3s;
+}
+ul:hover li:has(~ li:hover):before {
+  translate: 100% 0;
+  transition: .2s .2s,scale 0s .4s;
+}
+ul:hover li:hover ~ li:before {
+  translate: -100% 0;
+  transition: .2s .2s,scale 0s .4s;
+}
+
+
+body {
+  display: grid;
+  place-content: center;
+}
+</style>
+<body>
+  <div class="menu_button">
+    <button onclick="opennav()"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <nav class="menu" id="menu" style="display: none;">
+    <div class="navbar-container">
+      <ul class="menu-list">
+        <li class="navbar-item">
+          <a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i><p>Home</p></span></a>
+       </li>
+       <li class="navbar-item">
+         <a href="focus-mode.html"><span class="navbar-icon"><i class="fa-solid fa-clock"></i><p>Focus</p></span></a>
+       </li>
+       <li class="navbar-item">
+         <a href="to-do-list.html"><span class="navbar-icon"><i class="fa-solid fa-calendar-days"></i><p>Plan</p></span></a>
+       </li>
+       <li class="navbar-item">
+         <a href="flashcard.html"><span class="navbar-icon"><i class="fa-solid fa-pencil"></i><p>Learn</p></span></a>
+       </li>
+       <li class="navbar-item">
+         <a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i><p>Boost</p></span></a>
+       </li>
+      </ul>
+    </div>
+  </nav>
+    <nav class="navbar">
+        <div class="navbar-container">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i><p>Home</p></span></a>
+           </li>
+           <li class="navbar-item">
+             <a href="focus-mode.html"><span class="navbar-icon"><i class="fa-solid fa-clock"></i><p>Focus</p></span></a>
+           </li>
+           <li class="navbar-item">
+             <a href="to-do-list.html"><span class="navbar-icon"><i class="fa-solid fa-calendar-days"></i><p>Plan</p></span></a>
+           </li>
+           <li class="navbar-item">
+             <a href="flashcard.html"><span class="navbar-icon"><i class="fa-solid fa-pencil"></i><p>Learn</p></span></a>
+           </li>
+           <li class="navbar-item">
+             <a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i><p>Boost</p></span></a>
+           </li>
+          </ul>
+        </div>
+      </nav>
+  
+      
+      <section class="section">
+        <!-- <div class="head"> -->
+          <div class="container_helo">
+            <pre class="heading-primary"><h2 class="heading-primary head1">Simplify Your <span class="days">Days</span>, </h2></pre>
+            <pre><h2 class="heading-primary head2">Amplify Your <span class="success">Success</span></h2></pre>
+          </div>
+        <!-- </div> -->
+               
+        <div class="grid_  gap-y-[rem] gap-x-[2rem] ">
+          <!-- Card 1 -->
+          <div>
+            <div class="p-2 w-full">
+              <div class="relative group">
+                <div class="shadow_ absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 transition duration-1000"></div>
+                <div class="cards flex justify-center relative px-4 py-3 glass ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6 h-[11rem]">
+                  <div class="shadow_ w-80 p-6 text-center from-purple-500 to-pink-500 rounded-2xl text-white">
+                    <h4 class="text-2xl font-bold mb-2">Focus Zone</h4>
+                    <p class="text-base opacity-90">Block distractions and dive into deep work with our timer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Card 2 -->
+            <div class="p-2 w-full">
+              <div class="relative group">
+                <div class="shadow_ absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 transition duration-1000"></div>
+                <div class="cards flex justify-center relative px-4 py-3 glass ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6 h-[11rem]">
+                  <div class="shadow_ w-80 p-6 text-center from-purple-500 to-pink-500 rounded-2xl text-white">
+                    <h4 class="text-2xl font-bold mb-2">Plans & Achieve</h4>
+                    <p class="text-base opacity-90">Stay on top of your task and crush deadlines effortlessly</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="p-2 w-full">
+              <div class="relative group">
+                <div class="shadow_ absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 transition duration-1000"></div>
+                <div class="cards flex justify-center relative px-4 py-3 glass ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6 h-[11rem]">
+                  <div class="shadow_ w-80 p-6 text-center from-purple-500 to-pink-500 rounded-2xl text-white">
+                    <h4 class="text-2xl font-bold mb-2">Quick Learn</h4>
+                    <p class="text-base opacity-90">Study smarter with flashcards tailored to your learning</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="p-2 w-full">
+              <div class="relative group">
+                <div class="shadow_ absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 transition duration-1000"></div>
+                <div class="cards flex justify-center relative px-4 py-3 glass ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start space-x-6 h-[11rem]">
+                  <div class="shadow_ w-80 p-6 text-center from-purple-500 to-pink-500 rounded-2xl text-white">
+                    <h4 class="text-2xl font-bold mb-2">Wellness Boost</h4>
+                    <p class="text-base opacity-90">Small daily actions for  healthier, happier you</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
+        
+      </section>
+      
+      
+      
+</body>
+<script>
+  function opennav(){
+    const menu = document.getElementById('menu');
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+</script>
+</html>
