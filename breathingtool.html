@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Tool</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #201f47;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        
+        /* Breathing Tool Section */
+        .breathing-container {
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        .circle-wrapper {
+            position: relative;
+            margin: 30px auto;
+            width: 220px;
+            height: 220px;
+        }
+
+        .circle {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF3CAC, #784BA0, #2B86C5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0px 0px 15px rgba(255, 0, 150, 0.7);
+            transition: all 4s ease-in-out;
+        }
+
+        .circle.grow {
+            transform: scale(1.4);
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background: #FF3CAC;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #784BA0;
+        }
+
+        #session-counter {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #FF3CAC;
+        }
+
+        @media(max-width: 500px) {
+            .circle-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .circle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!--nav bar-->
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        
+        <ul class="navbar-list">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <li class="navbar-item"><a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i>
+                        Home</span></a></li>
+            <li class="navbar-item relative">
+                <span class="navbar-icon"><i class="fa-solid fa-heart"></i> Self-Care   </span>
+                <div class="dropdown-content">
+                    <a href="moodtracker.html">Mood Tracker</a>
+                    <a href="motivationalquotes.html">Motivational Quotes</a>
+                    <a href="breathingtool.html">Breathing Tool</a>
+                    <a href="progresstracker.html">Progress Tracker</a>
+                </div>
+            </li>            
+            <li class="navbar-item"><a href="focusmode.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-clock"></i> Focus</span></a></li>
+            <li class="navbar-item"><a href="todolist.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-calendar-days"></i> Plan</span></a></li>
+            <li class="navbar-item"><a href="Flashcard.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-pencil"></i> Learn</span></a></li>
+            <li class="navbar-item"><a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i>
+                        Boost</span></a></li> 
+            
+        </ul>
+
+    </nav>
+    <!-- Breathing Tool -->
+    <div class="breathing-container">
+        <h1>Breathing Exercise</h1>
+        <div class="circle-wrapper">
+            <div class="circle" id="circle">Ready?</div>
+        </div>
+        <button id="start-btn">Start</button>
+        <button id="stop-btn" style="display:none;">Stop</button>
+        <div id="session-counter">Cycles Completed: 0</div>
+    </div>
+
+    <script>
+        const circle = document.getElementById('circle');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const sessionCounter = document.getElementById('session-counter');
+        let sessions = 0;
+        let interval;
+        let isRunning = false;
+
+        startBtn.onclick = () => {
+            if (!isRunning) {
+                isRunning = true;
+                startBtn.style.display = 'none';
+                stopBtn.style.display = 'inline-block';
+                runBreathingCycle();
+                interval = setInterval(runBreathingCycle, 12000); // 12 seconds total cycle
+            }
+        };
+
+        stopBtn.onclick = () => {
+            clearInterval(interval);
+            circle.classList.remove("grow");
+            circle.innerText = "Ready?";
+            startBtn.style.display = 'inline-block';
+            stopBtn.style.display = 'none';
+            isRunning = false;
+        };
+
+        function runBreathingCycle() {
+            circle.innerText = "Inhale";
+            circle.classList.add("grow");
+
+            setTimeout(() => {
+                circle.innerText = "Hold";
+            }, 4000); // after 4 sec
+
+            setTimeout(() => {
+                circle.innerText = "Exhale";
+                circle.classList.remove("grow");
+            }, 8000); // after 8 sec
+
+            setTimeout(() => {
+                sessions++;
+                sessionCounter.innerText = `Cycles Completed: ${sessions}`;
+            }, 12000); // end of 12 sec
+        }
+
+
+    </script>
+</body>
+
+</html>

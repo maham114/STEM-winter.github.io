@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivational Quotes - Self-Care Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Page specific styles */
+        body{
+            background-color: #201f47;
+            color: white;
+        }
+        .container {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        h1,
+        h3 {
+            color:  #ff73fa;
+        }
+        h1{
+            font-size: 50px;
+        }
+
+        
+        .buttons {
+            padding: 10px 20px;
+            margin: 5px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            
+        }
+        select,
+        button{
+            margin-bottom: 15px;
+            padding: 8px;
+            text-align: center;
+            border: none;
+            border-radius: 15px;
+            font-weight:600;
+            font-size: 20px;
+            background: linear-gradient(135deg, #bd3cb8 0%, #df6cb5 50%, #e63be0 100%);
+            color: white;
+            font-family: 'Poppins', serif;
+            background-color: #201f47;  
+            transition: all ease-in-out 0.3s;
+            
+        }
+        select:hover,button:hover{
+            transform: scale(1.01);
+            box-shadow: 0 7px 10px rgba(226, 107, 250, 0.3);
+        }
+       
+
+
+        .quote {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: white;
+            min-height: 80px;
+            transition: all 0.3s;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .favorites {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .favorites ul {
+            padding-left: 20px;
+        }
+
+        .favorites li {
+            background:rgb(124, 96, 124);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .quote {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        
+        <ul class="navbar-list">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <li class="navbar-item"><a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i>
+                        Home</span></a></li>
+            <li class="navbar-item relative">
+                <span class="navbar-icon"><i class="fa-solid fa-heart"></i> Self-Care   </span>
+                <div class="dropdown-content">
+                    <a href="moodtracker.html">Mood Tracker</a>
+                    <a href="motivationalquotes.html">Motivational Quotes</a>
+                    <a href="breathingtool.html">Breathing Tool</a>
+                    <a href="progresstracker.html">Progress Tracker</a>
+                </div>
+            </li>            
+            <li class="navbar-item"><a href="focusmode.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-clock"></i> Focus</span></a></li>
+            <li class="navbar-item"><a href="todolist.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-calendar-days"></i> Plan</span></a></li>
+            <li class="navbar-item"><a href="Flashcard.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-pencil"></i> Learn</span></a></li>
+            <li class="navbar-item"><a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i>
+                        Boost</span></a></li> 
+            
+        </ul>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Motivational Quotes</h1>
+        <div class="quote" id="quote"></div>
+        <div class="buttons">
+            <select id="category">
+                <option value="all">All Categories</option>
+                <option value="productivity">Productivity</option>
+                <option value="confidence">Self-Confidence</option>
+                <option value="stress">Stress Relief</option>
+                <option value="academic">Academic Success</option>
+            </select>
+            <button id="generateBtn">Generate Quote</button>
+            <button id="saveBtn">Save Quote</button>
+            <button id="clearBtn">Clear Favorites</button>
+        </div>
+
+
+        
+
+        <div class="favorites">
+            <h3>Saved Favorites</h3>
+            <ul id="favoritesList"></ul>
+        </div>
+    </div>
+
+    <script>
+
+
+        // Quote generator logic
+        const generateBtn = document.getElementById('generateBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const quoteEl = document.getElementById('quote');
+        const favoritesList = document.getElementById('favoritesList');
+        const categorySelect = document.getElementById('category');
+
+        const QUOTE_STORAGE_KEY = "motivationalQuotesFavorites";
+
+        const quotes = {
+            productivity: [
+                "Start where you are. Use what you have. Do what you can.",
+                "The key to success is to start before you are ready.",
+                "Small steps every day lead to big results.",
+                "Don’t wait for opportunity. Create it.",
+                "Your future depends on what you do today.",
+                "Work hard in silence, let success make the noise.",
+                "Dream big, start small, act now.",
+                "Focus on being productive instead of busy.",
+                "Done is better than perfect.",
+                "Discipline is doing what needs to be done even if you don’t want to."
+            ],
+            confidence: [
+                "Believe you can and you're halfway there.",
+                "Your only limit is your mind.",
+                "You are stronger than you think.",
+                "Confidence comes from discipline and training.",
+                "Be yourself; everyone else is already taken.",
+                "Self-confidence is the best outfit, rock it and own it.",
+                "No one can make you feel inferior without your consent.",
+                "Believe in yourself and all that you are.",
+                "Don't be afraid to stand for what you believe in.",
+                "Confidence is silent. Insecurities are loud."
+            ],
+            stress: [
+                "Breathe in calm, breathe out stress.",
+                "Take time to make your soul happy.",
+                "Slow down and everything you are chasing will come around.",
+                "You don’t have to control everything, just breathe.",
+                "Almost everything will work again if you unplug it for a few minutes, including you.",
+                "Do something today that your future self will thank you for.",
+                "Happiness is not something ready-made. It comes from your own actions.",
+                "Rest is productive.",
+                "The greatest weapon against stress is our ability to choose one thought over another.",
+                "Let go of what you can’t control."
+            ],
+            academic: [
+                "Education is the passport to the future.",
+                "Push yourself, because no one else is going to do it for you.",
+                "Don’t watch the clock; do what it does. Keep going.",
+                "Your education is a dress rehearsal for a life that is yours to lead.",
+                "The expert in anything was once a beginner.",
+                "Success is the sum of small efforts repeated day in and day out.",
+                "The beautiful thing about learning is that no one can take it away from you.",
+                "Doubt kills more dreams than failure ever will.",
+                "Stay focused and never give up.",
+                "Knowledge is power."
+            ]
+        };
+
+        const allQuotes = [...quotes.productivity, ...quotes.confidence, ...quotes.stress, ...quotes.academic];
+
+        function generateQuote() {
+            quoteEl.classList.remove('fade-in');
+            let selected = categorySelect.value;
+            let quoteArray = selected === "all" ? allQuotes : quotes[selected];
+            const randomQuote = quoteArray[Math.floor(Math.random() * quoteArray.length)];
+            setTimeout(() => {
+                quoteEl.innerText = `"${randomQuote}"`;
+                quoteEl.classList.add('fade-in');
+            }, 100);
+        }
+
+        function saveQuote() {
+            const currentQuote = quoteEl.innerText;
+            if (currentQuote) {
+                let favorites = JSON.parse(localStorage.getItem(QUOTE_STORAGE_KEY)) || [];
+                if (!favorites.includes(currentQuote)) {
+                    favorites.push(currentQuote);
+                    localStorage.setItem(QUOTE_STORAGE_KEY, JSON.stringify(favorites));
+                    addToFavorites(currentQuote);
+                }
+            }
+        }
+
+        function addToFavorites(quote) {
+            const li = document.createElement('li');
+            li.innerText = quote;
+            favoritesList.appendChild(li);
+        }
+
+        function loadFavorites() {
+            const favorites = JSON.parse(localStorage.getItem(QUOTE_STORAGE_KEY)) || [];
+            favoritesList.innerHTML = "";
+            favorites.forEach(quote => addToFavorites(quote));
+        }
+
+        function clearFavorites() {
+            localStorage.removeItem(QUOTE_STORAGE_KEY);
+            favoritesList.innerHTML = "";
+        }
+
+        generateBtn.onclick = generateQuote;
+        saveBtn.onclick = saveQuote;
+        clearBtn.onclick = clearFavorites;
+
+        loadFavorites();
+    </script>
+</body>
+
+</html>

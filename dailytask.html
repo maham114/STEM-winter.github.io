@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Boost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/616de63735.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="navbar.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1A1A2E;
+            overflow-x: hidden;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        
+        <ul class="navbar-list">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <li class="navbar-item"><a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i>
+                        Home</span></a></li>
+            <li class="navbar-item relative">
+                <span class="navbar-icon"><i class="fa-solid fa-heart"></i> Self-Care   </span>
+                <div class="dropdown-content">
+                    <a href="moodtracker.html">Mood Tracker</a>
+                    <a href="motivationalquotes.html">Motivational Quotes</a>
+                    <a href="breathingtool.html">Breathing Tool</a>
+                    <a href="progresstracker.html">Progress Tracker</a>
+                </div>
+            </li>            
+            <li class="navbar-item"><a href="focusmode.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-clock"></i> Focus</span></a></li>
+            <li class="navbar-item"><a href="todolist.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-calendar-days"></i> Plan</span></a></li>
+            <li class="navbar-item"><a href="Flashcard.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-pencil"></i> Learn</span></a></li>
+            <li class="navbar-item"><a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i>
+                        Boost</span></a></li> 
+            
+        </ul>
+
+    </nav>
+
+
+    <!-- Page Content -->
+    <section class="text-center px-4 mt-10">
+        <h1 class="text-3xl font-bold text-white mb-6">Daily Task Booster</h1>
+        <p class="text-lg text-[#d1b2ff] max-w-xl mx-auto mb-10">Stay motivated with daily tasks designed to keep you on
+            track and energized!</p>
+
+        <!-- Daily Task Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">🌅 Morning Routine</h2>
+                <p class="text-[#d1b2ff]">Start your day with stretching, hydration, and setting your top 3 goals.</p>
+            </div>
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">📚 Learning Sprint</h2>
+                <p class="text-[#d1b2ff]">Dedicate 1 hour to focused study or professional skill-building.</p>
+            </div>
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">🧘 Self-Care</h2>
+                <p class="text-[#d1b2ff]">Take 15-30 mins for meditation, breathing exercises, or a walk.</p>
+            </div>
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">✍️ Reflection</h2>
+                <p class="text-[#d1b2ff]">Jot down lessons learned, gratitude points, or wins of the day.</p>
+            </div>
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">🚀 Power-Up Break</h2>
+                <p class="text-[#d1b2ff]">Take short 5-min power breaks after every 60 mins of deep work.</p>
+            </div>
+            <div class="bg-[#242951] p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                <h2 class="text-xl font-semibold text-[#ff73fa] mb-2">🌙 Night Unwind</h2>
+                <p class="text-[#d1b2ff]">Prepare for restful sleep by avoiding screens and practicing gratitude.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="navbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+
+<body style="margin:0; font-family: Arial, sans-serif; background-color: #1d174a; color: #fff;">
+
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        
+        <ul class="navbar-list">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-xmark"></i>
+            </label>
+            <li class="navbar-item"><a href="index.html"><span class="navbar-icon"><i class="fa-solid fa-house"></i>
+                        Home</span></a></li>
+            <li class="navbar-item relative">
+                <span class="navbar-icon"><i class="fa-solid fa-heart"></i> Self-Care   </span>
+                <div class="dropdown-content">
+                    <a href="moodtracker.html">Mood Tracker</a>
+                    <a href="motivationalquotes.html">Motivational Quotes</a>
+                    <a href="breathingtool.html">Breathing Tool</a>
+                    <a href="progresstracker.html">Progress Tracker</a>
+                </div>
+            </li>            
+            <li class="navbar-item"><a href="focusmode.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-clock"></i> Focus</span></a></li>
+            <li class="navbar-item"><a href="todolist.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-calendar-days"></i> Plan</span></a></li>
+            <li class="navbar-item"><a href="Flashcard.html"><span class="navbar-icon"><i
+                            class="fa-solid fa-pencil"></i> Learn</span></a></li>
+            <li class="navbar-item"><a href="dailytask.html"><span class="navbar-icon"><i class="fa-solid fa-star"></i>
+                        Boost</span></a></li> 
+            
+        </ul>
+
+    </nav>
+    <!-- Your Original To-Do List Content -->
+    <div
+        style="max-width: 600px; margin: 50px auto; background-color: #2c2557; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);">
+        <h1 style="text-align: center; color: #ff73fa;">To-Do List</h1>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <input type="text" id="taskInput" placeholder="Add your task..."
+                style="flex: 1; padding: 10px; border-radius: 5px; border: none; margin-right: 10px;">
+            <button onclick="addTask()"
+                style="padding: 10px 20px; background-color: #ff73fa; border: none; border-radius: 5px; color: #fff; cursor: pointer;">Add</button>
+        </div>
+        <ul id="taskList" style="list-style: none; padding: 0;">
+            <!-- Tasks will go here -->
+        </ul>
+    </div>
+</body>
+
+    <!-- Scripts -->
+    <script>
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+            if (taskText !== "") {
+                const taskList = document.getElementById('taskList');
+                const li = document.createElement('li');
+                li.style.backgroundColor = '#1d174a';
+                li.style.padding = '10px';
+                li.style.marginBottom = '10px';
+                li.style.borderRadius = '5px';
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                li.innerHTML = `
+                    <span>${taskText}</span>
+                    <button onclick="removeTask(this)" style="background: #ff4081; border: none; color: #fff; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Delete</button>
+                `;
+                taskList.appendChild(li);
+                taskInput.value = "";
+            }
+        }
+        function removeTask(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+
+
+</html>
